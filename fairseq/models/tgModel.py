@@ -6,7 +6,7 @@ from fairseq import options, utils
 from fairseq.modules import AdaptiveSoftmax
 from . import (
     FairseqEncoder, FairseqIncrementalDecoder, FairseqModel, register_model,
-    register_model_architecture
+    register_model_architecture, FairseqDecoder
 )
 from fairseq.models import register_model_architecture
 # from .lstm import *
