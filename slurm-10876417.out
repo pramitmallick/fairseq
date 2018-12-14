@@ -1,0 +1,11 @@
+Namespace(adaptive_softmax_cutoff='10000,50000,200000', arch='tg', bucket_cap_mb=150, clip_norm=25, criterion='cross_entropy', data=['data-bin/iwslt14.tokenized.de-en'], ddp_backend='c10d', decoder_attention='1', decoder_dropout_in=0.1, decoder_dropout_out=0.1, decoder_embed_dim=512, decoder_embed_path=None, decoder_hidden_size=512, decoder_layers=1, decoder_out_embed_dim=512, device_id=0, distributed_backend='nccl', distributed_init_method=None, distributed_port=-1, distributed_rank=0, distributed_world_size=1, dropout=0.1, encoder_bidirectional=False, encoder_dropout_in=0.1, encoder_dropout_out=0.1, encoder_embed_dim=512, encoder_embed_path=None, encoder_hidden_size=512, encoder_layers=1, fix_batches_to_gpus=False, fp16=False, fp16_init_scale=128, fp16_scale_tolerance=0.0, fp16_scale_window=None, keep_interval_updates=-1, left_pad_source='True', left_pad_target='False', log_format=None, log_interval=1000, lr=[0.25], lr_scheduler='reduce_lr_on_plateau', lr_shrink=0.1, max_epoch=0, max_sentences=None, max_sentences_valid=None, max_source_positions=1024, max_target_positions=1024, max_tokens=6000, max_update=0, min_loss_scale=0.0001, min_lr=1e-05, momentum=0.99, no_epoch_checkpoints=False, no_progress_bar=False, no_save=False, optimizer='nag', optimizer_overrides='{}', raw_text=False, reset_lr_scheduler=False, reset_optimizer=False, restore_file='checkpoint_last.pt', save_dir='checkpoints', save_interval=1, save_interval_updates=0, seed=1, sentence_avg=False, share_all_embeddings=False, share_decoder_input_output_embed=False, skip_invalid_size_inputs_valid_test=False, source_lang=None, target_lang=None, task='translation', train_subset='train', update_freq=[1], upsample_primary=1, valid_subset='valid', validate_interval=1, weight_decay=0.0)
+Traceback (most recent call last):
+  File "train.py", line 360, in <module>
+    main(args)
+  File "train.py", line 35, in main
+    task = tasks.setup_task(args)
+  File "/scratch/pm2758/StatNLP/fairseq/fairseq/tasks/__init__.py", line 19, in setup_task
+    return TASK_REGISTRY[args.task].setup_task(args)
+  File "/scratch/pm2758/StatNLP/fairseq/fairseq/tasks/translation.py", line 103, in setup_task
+    raise Exception('Could not infer language pair, please provide it explicitly')
+Exception: Could not infer language pair, please provide it explicitly
