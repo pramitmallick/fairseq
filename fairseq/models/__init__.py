@@ -22,9 +22,9 @@ from .fairseq_model import (
 from .composite_encoder import CompositeEncoder  # noqa: F401
 from .distributed_fairseq_model import DistributedFairseqModel  # noqa: F401
 
-from .lstm import *
-from .tg_decoder import TGDecoder
-from .tg_decoder import Actor
+# from .lstm import *
+# from .tg_decoder import TGDecoder
+# from .tg_decoder import Actor
 # from .tgModel import 
 
 
