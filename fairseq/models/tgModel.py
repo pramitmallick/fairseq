@@ -27,7 +27,8 @@ class Actor(nn.Module):
 
     def forward(self, input, att):
         pdb.set_trace()
-        inp = torch.cat((input, att), 1)
+        # inp = torch.cat((input, att), 1)
+        inp = torch.cat((input, att.transpose(1,0)), 1)
         output, self.hidden = self.gru(inp, hidden)
         output = self.softmax(self.fc(output[0]))
         return output, hidden
