@@ -5,10 +5,11 @@ from . import FairseqDecoder
 class Actor(nn.Module):
     def __init__(self, htSize, etSize, atSize=512):
         super(Actor, self).__init__()
-        self.gru = nn.GRU(etSize + atSize, htSize)
+        self.gru = nn.GRU(htSize + atSize, htSize)
         self.fc = nn.Linear(htSize, htSize)
         self.softmax = nn.LogSoftmax(dim=1)
         self.hidden = self.initHidden()
+
     def forward(self, input, att):
         inp = torch.cat((input, att), 1)
         output, self.hidden = self.gru(inp, hidden)
@@ -16,11 +17,9 @@ class Actor(nn.Module):
         return output, hidden
 
     def initHidden(self):
-        return torch.zeros(1, 1, self.hidden_size, device=device)
+        return Variable(torch.zeros(1, 1, self.hidden_size, device=device))
 
-
-
-class TGDecoder(FairseqIncrementalDecoder):
+class TGDecoder(FairseqDecoder):
     def __init__(
         self, dictionary, embed_dim=512, hidden_size=512, out_embed_dim=512,
         num_layers=1, dropout_in=0.1, dropout_out=0.1, attention=True,
