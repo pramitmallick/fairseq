@@ -36,7 +36,7 @@ class Actor(nn.Module):
         return output, self.hidden
 
     def initHidden(self):
-        return torch.Tensor(np.zeros((1, 46, self.hidden_size))).cuda()
+        return torch.Tensor(np.zeros((1, 46, self.attn_size))).cuda()
         # np.zeros(1, 1, self.hidden_size)
         # return Variable(torch.zeros(1, 1, self.hidden_size, device=device))
 
