@@ -118,6 +118,7 @@ class TGDecoder(FairseqDecoder):
 
         attn_scores = x.data.new(srclen, seqlen, bsz).zero_()
         outs = []
+        pdb.set_trace()
         for j in range(seqlen):
             # input feeding: concatenate context vector from previous time step
             input = torch.cat((x[j, :, :], input_feed), dim=1)
