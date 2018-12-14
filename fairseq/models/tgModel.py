@@ -10,6 +10,7 @@ from . import (
     register_model_architecture, FairseqDecoder
 )
 from fairseq.models import register_model_architecture
+import pdb
 # from .lstm import *
 # from .tg_decoder import *
 
@@ -25,6 +26,7 @@ class Actor(nn.Module):
         self.hidden = self.initHidden()
 
     def forward(self, input, att):
+        pdb.set_trace()
         inp = torch.cat((input, att), 1)
         output, self.hidden = self.gru(inp, hidden)
         output = self.softmax(self.fc(output[0]))
