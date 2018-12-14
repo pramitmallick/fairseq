@@ -27,7 +27,7 @@ class Actor(nn.Module):
         self.hidden = self.initHidden()
 
     def forward(self, input, att):
-        pdb.set_trace()
+        # pdb.set_trace()
         # inp = torch.cat((input, att), 1)
         inp = torch.cat((input, att.transpose(1,0)), 1)
         inp = torch.unsqueeze(inp, 0)
@@ -141,8 +141,8 @@ class TGDecoder(FairseqDecoder):
             
             attn_scores[:, j, :] = attn
 
-            at = self.actor(hidden, attn)
-
+            at, h = self.actor(hidden, attn)
+            pdb.set_trace()
             hidden = at + attn
             prev_hiddens[0] = hidden
             
