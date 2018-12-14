@@ -30,7 +30,7 @@ class Actor(nn.Module):
         pdb.set_trace()
         # inp = torch.cat((input, att), 1)
         inp = torch.cat((input, att.transpose(1,0)), 1)
-        inp = torch.unsqueeze(inp,0)
+        inp = torch.unsqueeze(inp, 0)
         output, self.hidden = self.gru(inp, self.hidden)
         output = self.softmax(self.fc(output[0]))
         return output, self.hidden
