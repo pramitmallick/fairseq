@@ -10,6 +10,8 @@ from . import (
 )
 from fairseq.models import register_model_architecture
 # from .lstm import *
+from .tg_decoder import *
+
 @register_model('tg')
 class LSTMModel(FairseqModel):
     def __init__(self, encoder, decoder):
