@@ -144,7 +144,7 @@ class TGDecoder(FairseqDecoder):
 
             # at, hs = self.actor(hidden, attn)
             # pdb.set_trace()
-            print(seqlen, hidden.size(), attn.size())
+            print(srclen, seqlen, bsz, hidden.size(), attn.size())
             # hidden = at + attn
             prev_hiddens[0] = hidden
             
