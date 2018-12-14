@@ -21,8 +21,8 @@ class Actor(nn.Module):
         self.attn_size = etSize
         self.attn_size = 128
         self.at_size = atSize
-        self.gru = nn.GRU(self.hidden_size + self.attn_size, self.attn_size)
-        self.fc = nn.Linear(self.attn_size, self.attn_size)
+        self.gru = nn.GRU(self.hidden_size + self.attn_size, self.hidden_size)
+        self.fc = nn.Linear(self.hidden_size, self.hidden_size)
         self.softmax = nn.LogSoftmax(dim=1)
         self.hidden = self.initHidden()
 
@@ -36,7 +36,7 @@ class Actor(nn.Module):
         return output, self.hidden
 
     def initHidden(self):
-        return torch.Tensor(np.zeros((1, 46, self.attn_size))).cuda()
+        return torch.Tensor(np.zeros((1, 46, self.hidden_size))).cuda()
         # np.zeros(1, 1, self.hidden_size)
         # return Variable(torch.zeros(1, 1, self.hidden_size, device=device))
 
@@ -535,6 +535,7 @@ class AttentionLayer(nn.Module):
     def forward(self, input, source_hids, encoder_padding_mask):
         # input: bsz x input_embed_dim
         # source_hids: srclen x bsz x output_embed_dim
+        pdb.set_trace()
 
         # x: bsz x output_embed_dim
         x = self.input_proj(input)
