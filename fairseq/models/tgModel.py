@@ -21,8 +21,8 @@ class Actor(nn.Module):
         self.attn_size = etSize
         self.attn_size = 128
         self.at_size = atSize
-        self.gru = nn.GRU(self.hidden_size + self.attn_size, self.hidden_size)
-        self.fc = nn.Linear(self.hidden_size, self.hidden_size)
+        self.gru = nn.GRU(self.hidden_size + self.attn_size, self.attn_size)
+        self.fc = nn.Linear(self.attn_size, self.attn_size)
         self.softmax = nn.LogSoftmax(dim=1)
         self.hidden = self.initHidden()
 
