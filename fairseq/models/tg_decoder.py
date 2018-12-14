@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 from . import FairseqDecoder
-from lstm import *
+from .lstm import *
 
 class Actor(nn.Module):
     def __init__(self, htSize, etSize, atSize=512):
