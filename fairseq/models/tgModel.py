@@ -19,9 +19,10 @@ class Actor(nn.Module):
         super(Actor, self).__init__()
         self.hidden_size = htSize
         self.attn_size = etSize
+        self.attn_size = 128
         self.at_size = atSize
-        self.gru = nn.GRU(htSize + atSize, htSize)
-        self.fc = nn.Linear(htSize, htSize)
+        self.gru = nn.GRU(self.hidden_size + self.attn_size, self.hidden_size)
+        self.fc = nn.Linear(self.hidden_size, self.hidden_size)
         self.softmax = nn.LogSoftmax(dim=1)
         self.hidden = self.initHidden()
 
@@ -29,9 +30,9 @@ class Actor(nn.Module):
         pdb.set_trace()
         # inp = torch.cat((input, att), 1)
         inp = torch.cat((input, att.transpose(1,0)), 1)
-        output, self.hidden = self.gru(inp, hidden)
+        output, self.hidden = self.gru(inp, self.hidden)
         output = self.softmax(self.fc(output[0]))
-        return output, hidden
+        return output, self.hidden
 
     def initHidden(self):
         return torch.Tensor(np.zeros((1, 1, self.hidden_size)))
