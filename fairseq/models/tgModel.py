@@ -16,6 +16,9 @@ from fairseq.models import register_model_architecture
 class Actor(nn.Module):
     def __init__(self, htSize, etSize, atSize=512):
         super(Actor, self).__init__()
+        self.hidden_size = htSize
+        self.attn_size = etSize
+        self.at_size = atSize
         self.gru = nn.GRU(htSize + atSize, htSize)
         self.fc = nn.Linear(htSize, htSize)
         self.softmax = nn.LogSoftmax(dim=1)
